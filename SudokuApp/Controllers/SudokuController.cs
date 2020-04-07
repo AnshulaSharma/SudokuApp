@@ -1,31 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 using SudokuApp.Model;
+using SudokuApp.Service;
+using SudokuApp.Utility;
+using System;
 
 namespace SudokuApp.Controllers
 {
     [Route("[controller]")]
     public class SudokuController : Controller
     {
-      
+        private readonly ILogger<SudokuController> _logger;
+        public SudokuController(ILogger<SudokuController> logger)
+        {
+            _logger = logger;
+        }
+
         [Route("solution")]
         [HttpPost]
-        public void Solution([FromBody] Puzzle sudokuPuzzle)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<PuzzleResponse> Solution([FromBody] Puzzle sudokuPuzzle)
         {
-            try
+
+            PuzzleResponse response;
+            SudokuService serviceObj = new SudokuService(sudokuPuzzle, _logger);
+            if (serviceObj.SolveSudoku())
             {
-              
+                response = new PuzzleResponse(Constants.OK, Constants.SuccessMessage, serviceObj.Board);
+
             }
-            catch
+            else
             {
-        
+                response = new PuzzleResponse(Constants.OK, Constants.FailureMessage, serviceObj.Board);
             }
+            return response;
+
+
         }
 
     }
