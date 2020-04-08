@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SudokuApp.Model;
+using SudokuApp.Repository;
 using SudokuApp.Service;
-using SudokuApp.Utility;
 using System;
 
 namespace SudokuApp.Controllers
@@ -11,33 +11,43 @@ namespace SudokuApp.Controllers
     [Route("[controller]")]
     public class SudokuController : Controller
     {
-        private readonly ILogger<SudokuController> _logger;
-        public SudokuController(ILogger<SudokuController> logger)
+        private ILogger<SudokuController> _logger;
+        private IPuzzleService sudokuService;
+        private IPuzzleRepository puzzlerepository;
+        public SudokuController(ILogger<SudokuController> logger, IPuzzleService service, IPuzzleRepository repository)
         {
             _logger = logger;
+            sudokuService = service;
+            puzzlerepository = repository;
+        }
+
+        [Route("create")]
+        [HttpGet]
+        public ActionResult<Puzzle> Create()
+        {
+            Random random = new Random();
+            Puzzle puzzle = puzzlerepository.GetPuzzleById(random.Next(1, 10));
+            return puzzle;
+
         }
 
         [Route("solution")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<PuzzleResponse> Solution([FromBody] Puzzle sudokuPuzzle)
+        public ActionResult<PuzzleResponse> Solution([FromBody]Puzzle sudokuPuzzle)
         {
-
             PuzzleResponse response;
-            SudokuService serviceObj = new SudokuService(sudokuPuzzle, _logger);
-            if (serviceObj.SolveSudoku())
+            int[][] result = sudokuService.GetSolvedSudoku(sudokuPuzzle.arrSudoku);
+            if (result != null)
             {
-                response = new PuzzleResponse(Constants.OK, Constants.SuccessMessage, serviceObj.Board);
-
+                response = new PuzzleResponse(Utility.Constants.OK, Utility.Constants.SuccessMessage, result);
             }
             else
             {
-                response = new PuzzleResponse(Constants.OK, Constants.FailureMessage, serviceObj.Board);
+                response = new PuzzleResponse(Utility.Constants.OK, Utility.Constants.FailureMessage, result);
             }
             return response;
-
-
         }
 
     }

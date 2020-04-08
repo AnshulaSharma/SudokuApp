@@ -7,24 +7,18 @@ using System.Threading.Tasks;
 
 namespace SudokuApp.Service
 {
-    public class SudokuService
+    public class PuzzleService : IPuzzleService
     {
         private int[][] board;
-        private ILogger logger;
-        public int[][] Board
+        public int[][] GetSolvedSudoku(int[][] puzzle)
         {
-            get
-            {
+            board = puzzle;
+            if (SolveSudoku())
                 return board;
-            }
+            else
+                return null;
         }
-        public SudokuService(Puzzle puzzle, ILogger _logger)
-        {
-            board = puzzle.arrSudoku;
-            logger = _logger;
-
-        }
-        public bool SolveSudoku()
+        private bool SolveSudoku()
         {
             try
             {
@@ -77,12 +71,11 @@ namespace SudokuApp.Service
             }
             catch (Exception ex)
             {
-                logger.LogError("ERROR Publishing Sudoku Puzzle Solution " + ex.Message);
+                //  _logger.LogError("ERROR Publishing Sudoku Puzzle Solution " + ex.Message);
                 return false;
-
             }
         }
-        public bool IsSafe(int row, int col, int num)
+        private bool IsSafe(int row, int col, int num)
         {
             try
             {
@@ -120,7 +113,7 @@ namespace SudokuApp.Service
             }
             catch (IndexOutOfRangeException ex)
             {
-                logger.LogError("ERROR Validating Number Already Exists in Puzzle " + ex.Message);
+                // _logger.LogError("ERROR Validating Number Already Exists in Puzzle " + ex.Message);
                 throw;
             }
         }

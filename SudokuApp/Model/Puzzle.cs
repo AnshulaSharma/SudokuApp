@@ -7,6 +7,10 @@ namespace SudokuApp.Model
 {
     public class Puzzle
     {
+        public Puzzle()
+        {
+            arrSudoku = new int[6][];
+        }
        public int[][] arrSudoku { get; set; }
     }
 }

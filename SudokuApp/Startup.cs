@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SudokuApp.Service;
+using SudokuApp.Repository;
 
 namespace SudokuApp
 {
@@ -26,6 +28,9 @@ namespace SudokuApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvc();
+            services.AddScoped<IPuzzleService, PuzzleService>();
+            services.AddScoped<IPuzzleRepository, PuzzleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
