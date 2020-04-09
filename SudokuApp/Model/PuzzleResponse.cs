@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SudokuApp.Model
 {
@@ -21,8 +17,8 @@ namespace SudokuApp.Model
 
         public bool Equals(PuzzleResponse other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (Result == null && other.Result == null)
+                return true;
             if (Result.Length != other.Result.Length)
                 return false;
             for (int i = 0; i < Result.Length; i++)
@@ -34,7 +30,6 @@ namespace SudokuApp.Model
                 }
             }
             return Status == other.Status && Message == other.Message;
-
         }
 
     }

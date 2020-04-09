@@ -35,7 +35,17 @@ namespace SudokuApp.Repository
             catch (FileNotFoundException ex)
             {
                 _logger.LogError("ERROR File not found " + ex.Message);
-                throw new PuzzleException(Constants.Message.InternalServerError,Constants.Code.Error);
+                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
+            }
+            catch (IOException ex)
+            {
+                _logger.LogError("ERROR File being used by another process " + ex.Message);
+                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                _logger.LogError("ERROR Index out of range " + ex.Message);
+                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
             }
             catch (IndexOutOfRangeException ex)
             {

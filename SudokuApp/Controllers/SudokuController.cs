@@ -4,7 +4,6 @@ using SudokuApp.Model;
 using SudokuApp.Repository;
 using SudokuApp.Service;
 using SudokuApp.Utility;
-using System;
 
 namespace SudokuApp.Controllers
 {
@@ -21,20 +20,28 @@ namespace SudokuApp.Controllers
             _puzzlerepository = repository;
         }
 
-        [Route("create")]
+        [Route("create/{id}")]
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult<PuzzleResponse> Create(int id)
         {
+            PuzzleResponse response;
             try
             {
-                Random random = new Random();
-                Puzzle puzzle = _puzzlerepository.GetPuzzleById(random.Next(1, 10));
-                return Ok(puzzle);
+                Puzzle puzzle = _puzzlerepository.GetPuzzleById(id);
+                if (puzzle != null)
+                {
+                    response = new PuzzleResponse(Constants.Code.OK, Constants.Message.Success, puzzle.arrSudoku);
+                    return response;
+                }
+                else
+                {
+                    throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
+                }
             }
             catch (PuzzleException ex)
             {
-                PuzzleResponse response = new PuzzleResponse(ex.Code, ex.Message, null);
-                return Ok(response);
+                response = new PuzzleResponse(ex.Code, ex.Message, null);
+                return response;
             }
         }
 

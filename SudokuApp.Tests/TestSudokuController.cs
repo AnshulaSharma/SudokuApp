@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SudokuApp.Controllers;
 using SudokuApp.Model;
+using SudokuApp.Repository;
 using SudokuApp.Service;
 using SudokuApp.Utility;
 
@@ -12,98 +13,130 @@ namespace SudokuApp.Tests
     [TestClass]
     public class TestSudokuController
     {
+        SudokuController sut;
+        ILogger<SudokuController> logger;
+        IPuzzleService service;
+        IPuzzleRepository repository;
+        Mock<ILogger<SudokuController>> mockLogger;
+        Mock<IPuzzleService> mockService;
+        Mock<IPuzzleRepository> mockRepository;
+        readonly TestData testData = new TestData();
+
+        [TestMethod]
+        public void Create_ShouldReturnNotNullObject()
+        {
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            mockService = new Mock<IPuzzleService>();
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            mockRepository.Setup(x => x.GetPuzzleById(0))
+                .Returns(new Puzzle(testData.GetValidPuzzle0()
+            ));
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Create(0);
+            Assert.IsNotNull(actualResult);
+        }
+
+        [TestMethod]
+        public void Create_ShouldReturnPuzzleResponseObject()
+        {
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            mockService = new Mock<IPuzzleService>();
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Create(0);
+            Assert.IsInstanceOfType(actualResult, typeof(ActionResult<PuzzleResponse>));
+        }
+
+        [TestMethod]
+        public void Create_ShouldReturnPuzzleForId0()
+        {
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            mockService = new Mock<IPuzzleService>();
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            mockRepository.Setup(x => x.GetPuzzleById(0))
+                .Returns(new Puzzle(testData.GetValidPuzzle0()
+            ));
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Create(0);
+            var expectedResult = new PuzzleResponse(Constants.Code.OK, Constants.Message.Success, testData.GetValidPuzzle0());
+            Assert.AreEqual(expectedResult.Equals(actualResult.Value), true);
+        }
+
+        [TestMethod]
+        public void Solution_ShouldReturnNotNullObject()
+        {
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            mockService = new Mock<IPuzzleService>();
+            mockService.Setup(x => x.GetSolvedSudoku(testData.GetValidPuzzle1()))
+              .Returns(testData.GetValidPuzzle1Solution());
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Solution(new Puzzle(testData.GetValidPuzzle1Solution()));
+            Assert.IsNotNull(actualResult);
+        }
+
         [TestMethod]
         public void Solution_ShouldReturnPuzzleResponseObject()
         {
-
-            var mock = new Mock<ILogger<SudokuController>>();
-            ILogger<SudokuController> logger = mock.Object;
-            var mock1 = new Mock<IPuzzleService>();
-            IPuzzleService service = mock1.Object;
-            var controller = new SudokuController(logger, service);
-            var testPuzzle = GetPuzzleInputCorrect();
-            var result = controller.Solution(testPuzzle);
-            Assert.IsInstanceOfType(result, typeof(ActionResult<PuzzleResponse>));
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            mockService = new Mock<IPuzzleService>();
+            mockService.Setup(x => x.GetSolvedSudoku(testData.GetValidPuzzle1()))
+              .Returns(testData.GetValidPuzzle1Solution());
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Solution(new Puzzle(testData.GetValidPuzzle1()));
+            Assert.IsInstanceOfType(actualResult, typeof(ActionResult<PuzzleResponse>));
         }
 
         [TestMethod]
-        public void Solution_ShouldReturnCorrectSolutionForPostiveSample()
+        public void Solution_ShouldReturnCorrectPuzzleForId0()
         {
-
-            var mock = new Mock<ILogger<SudokuController>>();
-            ILogger<SudokuController> logger = mock.Object;
-
-            var testPuzzle = GetPuzzleInputCorrect();
-            var mockService = new Mock<IPuzzleService>();
-            mockService.Setup(x => x.GetSolvedSudoku(testPuzzle.arrSudoku))
-                .Returns(new int[][] { new int[] { 3, 4, 1, 2, 5, 6 },
-                                       new int[] { 6, 5, 2, 1, 3, 4 },
-                                       new int[] { 5, 2, 3, 4, 6, 1 },
-                                       new int[] { 4, 1, 6, 5, 2, 3 },
-                                       new int[] { 2, 3, 4, 6, 1, 5 },
-                                       new int[] { 1, 6, 5, 3, 4, 2 } 
-                });
-            var controller = new SudokuController(logger, mockService.Object);
-
-            var result = controller.Solution(testPuzzle);
-            var actualResult = new PuzzleResponse(Constants.OK,
-                                                   Constants.SuccessMessage,
-                                                    new int[][] { new int[] { 3, 4, 1, 2, 5, 6 },
-                                                    new int[] { 6, 5, 2, 1, 3, 4 },
-                                                    new int[] { 5, 2, 3, 4, 6, 1 },
-                                                    new int[] { 4, 1, 6, 5, 2, 3 },
-                                                    new int[] { 2, 3, 4, 6, 1, 5 },
-                                                    new int[] { 1, 6, 5, 3, 4, 2 }
-                                                    });
-
-            Assert.AreEqual(actualResult.Equals(result.Value), true);
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            var puzzle = testData.GetValidPuzzle0();
+            mockService = new Mock<IPuzzleService>();
+            mockService.Setup(x => x.GetSolvedSudoku(puzzle))
+              .Returns(testData.GetValidPuzzle0Solution());
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Solution(new Puzzle(puzzle));
+            var expectedResult = new PuzzleResponse(Constants.Code.OK, Constants.Message.Success, testData.GetValidPuzzle0Solution()); 
+            Assert.AreEqual(expectedResult.Equals(actualResult.Value), true);
         }
-
 
         [TestMethod]
-        public void Solution_ShouldReturnNoSolution()
+        public void Solution_ShouldReturnNoSolutionForInvalidPuzzle()
         {
-            var mock = new Mock<ILogger<SudokuController>>();
-            ILogger<SudokuController> logger = mock.Object;
-            var mock1 = new Mock<IPuzzleService>();
-            IPuzzleService service = mock1.Object;
-            var controller = new SudokuController(logger, service);
-            var testPuzzle = GetPuzzleInputIncorrect();
-            var result = controller.Solution(testPuzzle);
-            var actualResult = new PuzzleResponse(Constants.OK,
-                                                  Constants.FailureMessage,
-                                                  null);
-
-            Assert.AreEqual(actualResult.Equals(result.Value), true);
-
+            mockLogger = new Mock<ILogger<SudokuController>>();
+            logger = mockLogger.Object;
+            var puzzle = testData.GetInvalidPuzzle();
+            mockService = new Mock<IPuzzleService>();
+            mockService.Setup(x => x.GetSolvedSudoku(puzzle))
+              .Returns((int[][])null);
+            service = mockService.Object;
+            mockRepository = new Mock<IPuzzleRepository>();
+            repository = mockRepository.Object;
+            sut = new SudokuController(logger, service, repository);
+            var actualResult = sut.Solution(new Puzzle(puzzle));
+            var expectedResult = new PuzzleResponse(Constants.Code.OK, Constants.Message.SolutionNotFound, null); 
+            Assert.AreEqual(expectedResult.Equals(actualResult.Value), true);
         }
-
-        private Puzzle GetPuzzleInputCorrect()
-        {
-            var testPuzzle = new Puzzle();
-            testPuzzle.arrSudoku = new int[][]{
-                new int[] { 0, 0, 0, 0, 5, 6 },
-                new int[] { 0, 0, 2, 0, 3, 0 },
-                new int[] { 0, 0, 0, 0, 6, 1 },
-                new int[] { 4, 1, 0, 0, 0, 0 },
-                new int[] { 0, 3, 0, 6, 0, 0 },
-                new int[] { 1, 6, 0, 0, 0, 0 }
-            };
-            return testPuzzle;
-        }
-        private Puzzle GetPuzzleInputIncorrect()
-        {
-            var testPuzzle = new Puzzle();
-            testPuzzle.arrSudoku = new int[][]{
-                new int[] { 6, 0, 0, 0, 5, 6 },
-                new int[] { 0, 0, 2, 0, 3, 0 },
-                new int[] { 0, 0, 0, 0, 6, 1 },
-                new int[] { 4, 1, 0, 0, 0, 0 },
-                new int[] { 0, 3, 0, 6, 0, 0 },
-                new int[] { 1, 6, 0, 0, 0, 0 }
-            };
-            return testPuzzle;
-        }
-
     }
 }

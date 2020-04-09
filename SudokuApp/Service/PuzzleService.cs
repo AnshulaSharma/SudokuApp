@@ -2,9 +2,6 @@
 using SudokuApp.Model;
 using SudokuApp.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SudokuApp.Service
 {
