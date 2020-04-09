@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SudokuApp.Model;
+using SudokuApp.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,27 @@ namespace SudokuApp.Service
 {
     public class PuzzleService : IPuzzleService
     {
+        private ILogger<PuzzleService> _logger;
         private int[][] board;
+
+        public PuzzleService(ILogger<PuzzleService> logger)
+        {
+            _logger = logger;
+        }
         public int[][] GetSolvedSudoku(int[][] puzzle)
         {
-            board = puzzle;
-            if (SolveSudoku())
-                return board;
-            else
-                return null;
+            try
+            {
+                board = puzzle;
+                if (SolveSudoku())
+                    return board;
+                else
+                    return null;
+            }
+            catch (Exception)
+            {
+                throw new PuzzleException(Constants.Message.SolutionNotFound, Constants.Code.Error);
+            }
         }
         private bool SolveSudoku()
         {
@@ -71,8 +85,8 @@ namespace SudokuApp.Service
             }
             catch (Exception ex)
             {
-                //  _logger.LogError("ERROR Publishing Sudoku Puzzle Solution " + ex.Message);
-                return false;
+                _logger.LogError("ERROR Publishing Sudoku Puzzle Solution " + ex.Message);
+                throw;
             }
         }
         private bool IsSafe(int row, int col, int num)
@@ -113,7 +127,7 @@ namespace SudokuApp.Service
             }
             catch (IndexOutOfRangeException ex)
             {
-                // _logger.LogError("ERROR Validating Number Already Exists in Puzzle " + ex.Message);
+                _logger.LogError("ERROR Validating Number Already Exists in Puzzle " + ex.Message);
                 throw;
             }
         }

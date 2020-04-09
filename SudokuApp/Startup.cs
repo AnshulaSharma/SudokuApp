@@ -29,8 +29,8 @@ namespace SudokuApp
         {
             services.AddControllers();
             services.AddMvc();
-            services.AddScoped<IPuzzleService, PuzzleService>();
-            services.AddScoped<IPuzzleRepository, PuzzleRepository>();
+            services.AddTransient<IPuzzleService, PuzzleService>();
+            services.AddTransient<IPuzzleRepository, PuzzleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

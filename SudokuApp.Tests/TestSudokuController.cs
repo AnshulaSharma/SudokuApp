@@ -27,7 +27,7 @@ namespace SudokuApp.Tests
         }
 
         [TestMethod]
-        public void Solution_ShouldReturnCorrectSolution()
+        public void Solution_ShouldReturnCorrectSolutionForPostiveSample()
         {
 
             var mock = new Mock<ILogger<SudokuController>>();

@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SudokuApp.Model;
 using SudokuApp.Repository;
 using SudokuApp.Service;
+using SudokuApp.Utility;
 using System;
 
 namespace SudokuApp.Controllers
@@ -11,43 +11,57 @@ namespace SudokuApp.Controllers
     [Route("[controller]")]
     public class SudokuController : Controller
     {
-        private ILogger<SudokuController> _logger;
-        private IPuzzleService sudokuService;
-        private IPuzzleRepository puzzlerepository;
+        private readonly ILogger<SudokuController> _logger;
+        private readonly IPuzzleService _sudokuService;
+        private readonly IPuzzleRepository _puzzlerepository;
         public SudokuController(ILogger<SudokuController> logger, IPuzzleService service, IPuzzleRepository repository)
         {
             _logger = logger;
-            sudokuService = service;
-            puzzlerepository = repository;
+            _sudokuService = service;
+            _puzzlerepository = repository;
         }
 
         [Route("create")]
         [HttpGet]
-        public ActionResult<Puzzle> Create()
+        public ActionResult Create()
         {
-            Random random = new Random();
-            Puzzle puzzle = puzzlerepository.GetPuzzleById(random.Next(1, 10));
-            return puzzle;
-
+            try
+            {
+                Random random = new Random();
+                Puzzle puzzle = _puzzlerepository.GetPuzzleById(random.Next(1, 10));
+                return Ok(puzzle);
+            }
+            catch (PuzzleException ex)
+            {
+                PuzzleResponse response = new PuzzleResponse(ex.Code, ex.Message, null);
+                return Ok(response);
+            }
         }
 
         [Route("solution")]
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<PuzzleResponse> Solution([FromBody]Puzzle sudokuPuzzle)
         {
+
             PuzzleResponse response;
-            int[][] result = sudokuService.GetSolvedSudoku(sudokuPuzzle.arrSudoku);
-            if (result != null)
+            try
             {
-                response = new PuzzleResponse(Utility.Constants.OK, Utility.Constants.SuccessMessage, result);
+                int[][] result = _sudokuService.GetSolvedSudoku(sudokuPuzzle.arrSudoku);
+                if (result != null)
+                {
+                    response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.Success, result);
+                }
+                else
+                {
+                    response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.SolutionNotFound, result);
+                }
+                return response;
             }
-            else
+            catch (PuzzleException ex)
             {
-                response = new PuzzleResponse(Utility.Constants.OK, Utility.Constants.FailureMessage, result);
+                response = new PuzzleResponse(ex.Code, ex.Message, null);
+                return response;
             }
-            return response;
         }
 
     }
