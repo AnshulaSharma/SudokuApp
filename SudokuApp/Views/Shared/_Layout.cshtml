@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        table {
+            margin: 1em auto;
+        }
+
+        td {
+            height: 60px;
+            width: 60px;
+            border: 1px solid;
+            text-align: center;
+        }
+
+            td:first-child {
+                border-left: solid;
+            }
+
+            td:nth-child(3n) {
+                border-right: solid;
+            }
+
+        tr:first-child {
+            border-top: solid;
+        }
+
+        tr:nth-child(2n) td {
+            border-bottom: solid;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        p, div {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Trocchi', serif;
+            font-size: 45px;
+            font-weight: normal;
+            line-height: 48px;
+            margin: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

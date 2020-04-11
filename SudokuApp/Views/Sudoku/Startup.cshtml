@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Startup";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function getPuzzle() {
+        let id = Math.floor(Math.random() * 10);
+        $.ajax({
+            url: '/sudoku/puzzle/' + id,
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: function (puzzle) {
+                createPuzzle(puzzle);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    }
+
+    function createPuzzle(puzzle) {
+        var status = puzzle["status"];
+        var message = puzzle["message"];
+        var arrSudoku = puzzle["result"];
+        if (status == "2000" && message == "Success") {
+            var htmlElement = document.getElementById("table");
+            var dynamicHtml = "";
+            if (arrSudoku != null) {
+                for (let i = 0; i < arrSudoku.length; i++) {
+                    dynamicHtml += "<tr>"
+                    for (let j = 0; j < arrSudoku.length; j++) {
+                        var text;
+                        if (arrSudoku[i][j] == 0)
+                            text = " ";
+                        else
+                            text = arrSudoku[i][j];
+                        dynamicHtml += "<td>" + text + "</td>";
+                    }
+                    dynamicHtml += "</tr>"
+                }
+            }
+            htmlElement.innerHTML = dynamicHtml;
+        }
+    }
+
+    function getPuzzleSolution() {
+        var arrSudoku = [];
+        $('tr').each(function () {
+            var arr = []
+            $('td', this).each(function () {
+                var data;
+                if ($(this).text() === " ")
+                    data = "0";
+                else
+                    data = $(this).text();
+                arr.push(parseInt(data));
+
+            });
+            arrSudoku.push(arr);
+        });
+        $.ajax({
+            url: "/sudoku/solution",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ "arrSudoku": arrSudoku }),
+            success: function (puzzle) {
+                createPuzzle(puzzle);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>
+
+
+<body>
+    <form>
+        <div><h1>Sudoku 6x6</h1></div>
+        <p>
+            <input type="button" class="button" value='New Game' onclick="getPuzzle()" onkeypress="GetPuzzle()" />
+            <input type="button" class="button" value='Solution' onclick="getPuzzleSolution()" onkeypress="GetPuzzleSolution()" />
+        </p>
+        <table id="table"></table>
+    </form>
+</body>
