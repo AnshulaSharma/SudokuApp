@@ -10,16 +10,17 @@ namespace SudokuApp.Repository
     public class PuzzleRepository : IPuzzleRepository
     {
         ILogger<PuzzleRepository> _logger;
+        Workbook workbook;
         public PuzzleRepository(ILogger<PuzzleRepository> logger)
         {
             _logger = logger;
+            workbook = new Workbook();
         }
         public Puzzle GetPuzzleById(int id)
         {
             try
             {
                 Puzzle puzzle = new Puzzle();
-                Workbook workbook = new Workbook();
                 workbook.LoadFromFile(@"Sudoku 6X6.xlsx");
                 Worksheet sheet = workbook.Worksheets[id];
                 for (int i = 1; i <= 6; i++)

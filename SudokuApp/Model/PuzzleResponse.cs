@@ -17,20 +17,9 @@ namespace SudokuApp.Model
 
         public bool Equals(PuzzleResponse other)
         {
-            if (Result == null && other.Result == null)
-                return true;
-            if (Result.Length != other.Result.Length)
-                return false;
-            for (int i = 0; i < Result.Length; i++)
-            {
-                for (int j = 0; j < Result.Length; j++)
-                {
-                    if (Result[i][j] != other.Result[i][j])
-                        return false;
-                }
-            }
-            return Status == other.Status && Message == other.Message;
+            return Status == other.Status && Message == other.Message&& Result.AreEqual(other.Result);
         }
 
     }
+    
 }

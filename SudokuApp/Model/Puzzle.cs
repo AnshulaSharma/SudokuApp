@@ -10,6 +10,7 @@
         {
             arrSudoku = puzzle;
         }
-       public int[][] arrSudoku { get; set; }
+        public int[][] arrSudoku { get; set; }
     }
+   
 }

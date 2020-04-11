@@ -52,7 +52,7 @@ namespace SudokuApp.Tests
                new int[] { 4, 1, 6, 5, 2, 3 },
                new int[] { 2, 3, 4, 6, 1, 5 },
                new int[] { 1, 6, 5, 3, 4, 2 }
-            }; 
+            };
         }
         public int[][] GetValidPuzzle1Solution()
         {
@@ -66,6 +66,28 @@ namespace SudokuApp.Tests
                new int[] { 4, 5, 1, 6, 3, 2 }
             };
         }
-
+        public int[][] GetSmallerPuzzle5x6()
+        {
+            return new int[][]
+          {
+                new int[] { 0, 0, 0, 0, 5, 6 },
+                new int[] { 0, 0, 2, 0, 3, 0 },
+                new int[] { 0, 0, 0, 0, 6, 1 },
+                new int[] { 4, 1, 0, 0, 0, 0 },
+                new int[] { 0, 3, 0, 6, 0, 0 }
+          };
+        }
+        public int[][] GetGreaterPuzzle6x7()
+        {
+            return new int[][]
+          {
+                new int[] { 0, 0, 0, 0, 5, 6, 1 },
+                new int[] { 0, 0, 2, 0, 3, 0, 0 },
+                new int[] { 0, 0, 0, 0, 6, 1, 2 },
+                new int[] { 4, 1, 0, 0, 0, 0, 0 },
+                new int[] { 0, 3, 0, 6, 0, 0, 4 },
+                new int[] { 1, 6, 0, 0, 0, 0, 0 }
+          };
+        }
     }
 }

@@ -20,9 +20,15 @@ namespace SudokuApp.Controllers
             _puzzlerepository = repository;
         }
 
-        [Route("create/{id}")]
         [HttpGet]
-        public ActionResult<PuzzleResponse> Create(int id)
+        public ViewResult Startup()
+        {
+            return View();
+        }
+
+        [Route("puzzle/{id}")]
+        [HttpGet]
+        public ActionResult<PuzzleResponse> CreatePuzzle(int id)
         {
             PuzzleResponse response;
             try
@@ -40,6 +46,7 @@ namespace SudokuApp.Controllers
             }
             catch (PuzzleException ex)
             {
+                _logger.LogError("ERROR " + ex.Message);
                 response = new PuzzleResponse(ex.Code, ex.Message, null);
                 return response;
             }
@@ -49,23 +56,28 @@ namespace SudokuApp.Controllers
         [HttpPost]
         public ActionResult<PuzzleResponse> Solution([FromBody]Puzzle sudokuPuzzle)
         {
-
             PuzzleResponse response;
             try
             {
-                int[][] result = _sudokuService.GetSolvedSudoku(sudokuPuzzle.arrSudoku);
-                if (result != null)
+                if (sudokuPuzzle != null)
                 {
-                    response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.Success, result);
+                    int[][] result = _sudokuService.GetSolvedSudoku6x6(sudokuPuzzle.arrSudoku);
+                    if (result != null)
+                    {
+                        response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.Success, result);
+                    }
+                    else
+                    {
+                        response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.SolutionNotFound, result);
+                    }
+                    return response;
                 }
                 else
-                {
-                    response = new PuzzleResponse(Constants.Code.OK, Utility.Constants.Message.SolutionNotFound, result);
-                }
-                return response;
+                    throw new PuzzleException(Constants.Message.IncorrectInput, Constants.Code.Error);
             }
             catch (PuzzleException ex)
             {
+                _logger.LogInformation("ERROR " + ex.Message);
                 response = new PuzzleResponse(ex.Code, ex.Message, null);
                 return response;
             }

@@ -23,7 +23,7 @@ namespace SudokuApp.Tests
         readonly TestData testData = new TestData();
 
         [TestMethod]
-        public void Create_ShouldReturnNotNullObject()
+        public void CreatePuzzle_ShouldReturnNotNullObject()
         {
             mockLogger = new Mock<ILogger<SudokuController>>();
             logger = mockLogger.Object;
@@ -35,12 +35,12 @@ namespace SudokuApp.Tests
             ));
             repository = mockRepository.Object;
             sut = new SudokuController(logger, service, repository);
-            var actualResult = sut.Create(0);
+            var actualResult = sut.CreatePuzzle(0);
             Assert.IsNotNull(actualResult);
         }
 
         [TestMethod]
-        public void Create_ShouldReturnPuzzleResponseObject()
+        public void CreatePuzzle_ShouldReturnPuzzleResponseObject()
         {
             mockLogger = new Mock<ILogger<SudokuController>>();
             logger = mockLogger.Object;
@@ -49,12 +49,12 @@ namespace SudokuApp.Tests
             mockRepository = new Mock<IPuzzleRepository>();
             repository = mockRepository.Object;
             sut = new SudokuController(logger, service, repository);
-            var actualResult = sut.Create(0);
+            var actualResult = sut.CreatePuzzle(0);
             Assert.IsInstanceOfType(actualResult, typeof(ActionResult<PuzzleResponse>));
         }
 
         [TestMethod]
-        public void Create_ShouldReturnPuzzleForId0()
+        public void CreatePuzzle_ShouldReturnPuzzleForId0()
         {
             mockLogger = new Mock<ILogger<SudokuController>>();
             logger = mockLogger.Object;
@@ -66,7 +66,7 @@ namespace SudokuApp.Tests
             ));
             repository = mockRepository.Object;
             sut = new SudokuController(logger, service, repository);
-            var actualResult = sut.Create(0);
+            var actualResult = sut.CreatePuzzle(0);
             var expectedResult = new PuzzleResponse(Constants.Code.OK, Constants.Message.Success, testData.GetValidPuzzle0());
             Assert.AreEqual(expectedResult.Equals(actualResult.Value), true);
         }
@@ -77,7 +77,7 @@ namespace SudokuApp.Tests
             mockLogger = new Mock<ILogger<SudokuController>>();
             logger = mockLogger.Object;
             mockService = new Mock<IPuzzleService>();
-            mockService.Setup(x => x.GetSolvedSudoku(testData.GetValidPuzzle1()))
+            mockService.Setup(x => x.GetSolvedSudoku6x6(testData.GetValidPuzzle1()))
               .Returns(testData.GetValidPuzzle1Solution());
             service = mockService.Object;
             mockRepository = new Mock<IPuzzleRepository>();
@@ -93,7 +93,7 @@ namespace SudokuApp.Tests
             mockLogger = new Mock<ILogger<SudokuController>>();
             logger = mockLogger.Object;
             mockService = new Mock<IPuzzleService>();
-            mockService.Setup(x => x.GetSolvedSudoku(testData.GetValidPuzzle1()))
+            mockService.Setup(x => x.GetSolvedSudoku6x6(testData.GetValidPuzzle1()))
               .Returns(testData.GetValidPuzzle1Solution());
             service = mockService.Object;
             mockRepository = new Mock<IPuzzleRepository>();
@@ -110,7 +110,7 @@ namespace SudokuApp.Tests
             logger = mockLogger.Object;
             var puzzle = testData.GetValidPuzzle0();
             mockService = new Mock<IPuzzleService>();
-            mockService.Setup(x => x.GetSolvedSudoku(puzzle))
+            mockService.Setup(x => x.GetSolvedSudoku6x6(puzzle))
               .Returns(testData.GetValidPuzzle0Solution());
             service = mockService.Object;
             mockRepository = new Mock<IPuzzleRepository>();
@@ -128,7 +128,7 @@ namespace SudokuApp.Tests
             logger = mockLogger.Object;
             var puzzle = testData.GetInvalidPuzzle();
             mockService = new Mock<IPuzzleService>();
-            mockService.Setup(x => x.GetSolvedSudoku(puzzle))
+            mockService.Setup(x => x.GetSolvedSudoku6x6(puzzle))
               .Returns((int[][])null);
             service = mockService.Object;
             mockRepository = new Mock<IPuzzleRepository>();

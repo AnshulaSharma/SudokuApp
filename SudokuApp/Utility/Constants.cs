@@ -12,6 +12,7 @@
             public const string Success = "Success";
             public const string SolutionNotFound = "Solution not found";
             public const string InternalServerError = "Please try after some time";
+            public const string IncorrectInput = "Input not in correct format";
         }
     }
 }

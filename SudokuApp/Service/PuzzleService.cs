@@ -14,7 +14,7 @@ namespace SudokuApp.Service
         {
             _logger = logger;
         }
-        public int[][] GetSolvedSudoku(int[][] puzzle)
+        public int[][] GetSolvedSudoku6x6(int[][] puzzle)
         {
             try
             {
@@ -34,12 +34,17 @@ namespace SudokuApp.Service
             try
             {
                 int len = board.GetLength(0);
+                if (len != 6)
+                    return false;
                 int row = -1;
                 int col = -1;
                 bool isEmpty = true;
                 for (int i = 0; i < len; i++)
                 {
-                    for (int j = 0; j < len; j++)
+                    int arrayLength = board[i].Length;
+                    if (arrayLength != 6)
+                        return false;
+                    for (int j = 0; j < arrayLength; j++)
                     {
                         if (board[i][j] == 0)
                         {

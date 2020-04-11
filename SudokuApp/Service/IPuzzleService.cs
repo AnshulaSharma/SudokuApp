@@ -2,6 +2,6 @@
 {
     public interface IPuzzleService
     {
-        public int[][] GetSolvedSudoku(int[][] puzzle);
+        public int[][] GetSolvedSudoku6x6(int[][] puzzle);
     }
 }
