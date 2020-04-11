@@ -7,7 +7,7 @@ Sudoku Web App which generates a 6x6 puzzle and provides solution for it.
 .Net Core WebAPI Project with MVC
 
 # How to run
-	Requirment: Visual Studio/Visual Studio Code, Browser
+	Requirment: Visual Studio as it runs on IIS, Browser
 	Download/Clone the application and run the solution.
 	The application should open in the browser https://localhost:44378/Sudoku and points to Startup View.
 
