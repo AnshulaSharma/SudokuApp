@@ -1,10 +1,11 @@
 # SudokuApp
 
-#Introduction
+# Introduction
 Sudoku Web App which generates a 6x6 puzzle and provides solution for it.
 
-#Architecture
-.Net Core WebAPI Project with MVC
+# Architecture
+.Net Core WebAPI Project
+ MVC used to only refer a startup View to consume the web Api
 
 # How to run
 	Requirment: Visual Studio as it runs on IIS, Browser
@@ -32,5 +33,9 @@ Sudoku Web App which generates a 6x6 puzzle and provides solution for it.
         -d '{
                 "arrSudoku":  [ [ 3, 6, 0, 0, 0, 5 ], [ 0, 0, 0, 2, 0, 3 ], [ 2, 3, 0, 4, 5, 1 ], [ 5, 0, 0, 3, 2, 0 ], [ 0, 0, 3, 5, 0, 4 ], [ 0, 0, 1, 0, 3, 2 ] ]
 	        }'
+# Command to run unit test coverage
+	Open Developer Command Prompt
+	Change directory to the test solution ~\SudokuApp.Tests\
+	Run command dotnet test /p:CollectCoverage=true
 
 
