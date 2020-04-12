@@ -2,6 +2,7 @@
 
 # Introduction
 Sudoku Web App which generates a 6x6 puzzle and provides solution for it.
+An excel sheet is used as puzzle's datastore which is embedded in the application. 
 
 # Architecture
 .Net Core WebAPI Project
