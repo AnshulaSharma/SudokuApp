@@ -33,29 +33,9 @@ namespace SudokuApp.Repository
                 }
                 return puzzle;
             }
-            catch (FileNotFoundException ex)
+            catch(Exception ex)
             {
-                _logger.LogError("ERROR File not found " + ex.Message);
-                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
-            }
-            catch (IOException ex)
-            {
-                _logger.LogError("ERROR File being used by another process " + ex.Message);
-                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                _logger.LogError("ERROR Index out of range " + ex.Message);
-                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                _logger.LogError("ERROR Index out of range " + ex.Message);
-                throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
-            }
-            catch (FormatException ex)
-            {
-                _logger.LogError("ERROR Puzzle format incorrect in file " + ex.Message);
+                _logger.LogError("ERROR "+Constants.Message.InternalServerError + ex.Message);
                 throw new PuzzleException(Constants.Message.InternalServerError, Constants.Code.Error);
             }
         }

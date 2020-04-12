@@ -1,0 +1,1005 @@
+{
+  "SudokuApp.dll": {
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Program.cs": {
+      "SudokuApp.Program": {
+        "System.Void SudokuApp.Program::Main(System.String[])": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Hosting.IHostBuilder SudokuApp.Program::CreateHostBuilder(System.String[])": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Startup.cs": {
+      "SudokuApp.Startup": {
+        "Microsoft.Extensions.Configuration.IConfiguration SudokuApp.Startup::get_Configuration()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void SudokuApp.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void SudokuApp.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 9,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SudokuApp.Startup::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Service\\PuzzleService.cs": {
+      "SudokuApp.Service.PuzzleService": {
+        "System.Int32[][] SudokuApp.Service.PuzzleService::GetSolvedSudoku6x6(System.Int32[][])": {
+          "Lines": {
+            "18": 4,
+            "20": 4,
+            "21": 4,
+            "22": 4,
+            "23": 1,
+            "25": 3,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "31": 4
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 22,
+              "Offset": 17,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Boolean SudokuApp.Service.PuzzleService::SolveSudoku()": {
+          "Lines": {
+            "33": 48,
+            "35": 48,
+            "36": 48,
+            "37": 48,
+            "38": 1,
+            "39": 47,
+            "40": 47,
+            "41": 47,
+            "42": 312,
+            "43": 155,
+            "44": 155,
+            "45": 155,
+            "46": 1,
+            "47": 1832,
+            "48": 807,
+            "49": 807,
+            "50": 45,
+            "51": 45,
+            "52": 45,
+            "53": 45,
+            "54": 45,
+            "56": 762,
+            "57": 154,
+            "58": 45,
+            "59": 45,
+            "61": 109,
+            "64": 46,
+            "65": 1,
+            "66": 1,
+            "70": 458,
+            "71": 208,
+            "72": 208,
+            "73": 44,
+            "74": 44,
+            "75": 44,
+            "76": 24,
+            "77": 24,
+            "80": 20,
+            "81": 20,
+            "83": 20,
+            "84": 20,
+            "85": 184,
+            "86": 21,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "93": 48
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 26,
+              "EndOffset": 36,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 47
+            },
+            {
+              "Line": 42,
+              "Offset": 169,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 155
+            },
+            {
+              "Line": 45,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 45,
+              "Offset": 73,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 154
+            },
+            {
+              "Line": 47,
+              "Offset": 138,
+              "EndOffset": 88,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 807
+            },
+            {
+              "Line": 49,
+              "Offset": 108,
+              "EndOffset": 110,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 45
+            },
+            {
+              "Line": 49,
+              "Offset": 108,
+              "EndOffset": 121,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 762
+            },
+            {
+              "Line": 47,
+              "Offset": 138,
+              "EndOffset": 140,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 154
+            },
+            {
+              "Line": 57,
+              "Offset": 148,
+              "EndOffset": 150,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 45
+            },
+            {
+              "Line": 57,
+              "Offset": 148,
+              "EndOffset": 153,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 109
+            },
+            {
+              "Line": 42,
+              "Offset": 169,
+              "EndOffset": 171,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 46
+            },
+            {
+              "Line": 64,
+              "Offset": 176,
+              "EndOffset": 178,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 1
+            },
+            {
+              "Line": 64,
+              "Offset": 176,
+              "EndOffset": 187,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 45
+            },
+            {
+              "Line": 70,
+              "Offset": 273,
+              "EndOffset": 192,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 208
+            },
+            {
+              "Line": 72,
+              "Offset": 207,
+              "EndOffset": 209,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 44
+            },
+            {
+              "Line": 75,
+              "Offset": 232,
+              "EndOffset": 234,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 24
+            },
+            {
+              "Line": 75,
+              "Offset": 232,
+              "EndOffset": 240,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 20
+            },
+            {
+              "Line": 72,
+              "Offset": 207,
+              "EndOffset": 254,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 184
+            },
+            {
+              "Line": 70,
+              "Offset": 273,
+              "EndOffset": 275,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 21
+            }
+          ]
+        },
+        "System.Boolean SudokuApp.Service.PuzzleService::IsSafe(System.Int32,System.Int32,System.Int32)": {
+          "Lines": {
+            "95": 208,
+            "97": 208,
+            "98": 2064,
+            "99": 929,
+            "100": 929,
+            "101": 105,
+            "102": 105,
+            "104": 824,
+            "106": 1044,
+            "107": 473,
+            "108": 473,
+            "109": 54,
+            "110": 54,
+            "112": 419,
+            "114": 49,
+            "115": 49,
+            "117": 282,
+            "118": 97,
+            "119": 760,
+            "120": 288,
+            "121": 288,
+            "122": 5,
+            "123": 5,
+            "125": 283,
+            "126": 92,
+            "128": 44,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "135": 208
+          },
+          "Branches": [
+            {
+              "Line": 98,
+              "Offset": 57,
+              "EndOffset": 6,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 929
+            },
+            {
+              "Line": 100,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 105
+            },
+            {
+              "Line": 100,
+              "Offset": 22,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 824
+            },
+            {
+              "Line": 98,
+              "Offset": 57,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 103
+            },
+            {
+              "Line": 106,
+              "Offset": 121,
+              "EndOffset": 64,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 473
+            },
+            {
+              "Line": 108,
+              "Offset": 83,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 54
+            },
+            {
+              "Line": 108,
+              "Offset": 83,
+              "EndOffset": 94,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 419
+            },
+            {
+              "Line": 106,
+              "Offset": 121,
+              "EndOffset": 123,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 49
+            },
+            {
+              "Line": 117,
+              "Offset": 212,
+              "EndOffset": 140,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 97
+            },
+            {
+              "Line": 119,
+              "Offset": 192,
+              "EndOffset": 146,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 288
+            },
+            {
+              "Line": 121,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 5
+            },
+            {
+              "Line": 121,
+              "Offset": 166,
+              "EndOffset": 174,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 283
+            },
+            {
+              "Line": 119,
+              "Offset": 192,
+              "EndOffset": 194,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 92
+            },
+            {
+              "Line": 117,
+              "Offset": 212,
+              "EndOffset": 214,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 44
+            }
+          ]
+        },
+        "System.Void SudokuApp.Service.PuzzleService::.ctor(Microsoft.Extensions.Logging.ILogger`1<SudokuApp.Service.PuzzleService>)": {
+          "Lines": {
+            "13": 4,
+            "14": 4,
+            "15": 4,
+            "16": 4
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Repository\\PuzzleRepository.cs": {
+      "SudokuApp.Repository.PuzzleRepository": {
+        "SudokuApp.Model.Puzzle SudokuApp.Repository.PuzzleRepository::GetPuzzleById(System.Int32)": {
+          "Lines": {
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "41": 0
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 140,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 122,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 29,
+              "Offset": 122,
+              "EndOffset": 124,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 140,
+              "EndOffset": 142,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SudokuApp.Repository.PuzzleRepository::.ctor(Microsoft.Extensions.Logging.ILogger`1<SudokuApp.Repository.PuzzleRepository>)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Model\\Extension.cs": {
+      "SudokuApp.Model.Extension": {
+        "System.Boolean SudokuApp.Model.Extension::AreEqual(System.Int32[][],System.Int32[][])": {
+          "Lines": {
+            "8": 4,
+            "9": 4,
+            "10": 1,
+            "11": 3,
+            "12": 0,
+            "13": 42,
+            "14": 18,
+            "15": 252,
+            "16": 108,
+            "17": 108,
+            "18": 0,
+            "19": 108,
+            "20": 18,
+            "21": 3,
+            "22": 4
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 9,
+              "Offset": 2,
+              "EndOffset": 10,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 9,
+              "Offset": 13,
+              "EndOffset": 15,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 9,
+              "Offset": 13,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 11,
+              "Offset": 32,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 32,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 3
+            },
+            {
+              "Line": 13,
+              "Offset": 119,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 18
+            },
+            {
+              "Line": 15,
+              "Offset": 98,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 108
+            },
+            {
+              "Line": 17,
+              "Offset": 70,
+              "EndOffset": 72,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 17,
+              "Offset": 70,
+              "EndOffset": 76,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 108
+            },
+            {
+              "Line": 15,
+              "Offset": 98,
+              "EndOffset": 100,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 18
+            },
+            {
+              "Line": 13,
+              "Offset": 119,
+              "EndOffset": 121,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 3
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Model\\Puzzle.cs": {
+      "SudokuApp.Model.Puzzle": {
+        "System.Int32[][] SudokuApp.Model.Puzzle::get_arrSudoku()": {
+          "Lines": {
+            "13": 12
+          },
+          "Branches": []
+        },
+        "System.Void SudokuApp.Model.Puzzle::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Void SudokuApp.Model.Puzzle::.ctor(System.Int32[][])": {
+          "Lines": {
+            "9": 6,
+            "10": 6,
+            "11": 6,
+            "12": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Model\\PuzzleException.cs": {
+      "SudokuApp.Model.PuzzleException": {
+        "System.Void SudokuApp.Model.PuzzleException::.ctor(System.String,System.String)": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1,
+            "11": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Model\\PuzzleResponse.cs": {
+      "SudokuApp.Model.PuzzleResponse": {
+        "System.String SudokuApp.Model.PuzzleResponse::get_Status()": {
+          "Lines": {
+            "7": 16
+          },
+          "Branches": []
+        },
+        "System.String SudokuApp.Model.PuzzleResponse::get_Message()": {
+          "Lines": {
+            "8": 16
+          },
+          "Branches": []
+        },
+        "System.Int32[][] SudokuApp.Model.PuzzleResponse::get_Result()": {
+          "Lines": {
+            "9": 16
+          },
+          "Branches": []
+        },
+        "System.Boolean SudokuApp.Model.PuzzleResponse::Equals(SudokuApp.Model.PuzzleResponse)": {
+          "Lines": {
+            "19": 3,
+            "20": 3,
+            "21": 3
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 20,
+              "Offset": 37,
+              "EndOffset": 39,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 20,
+              "Offset": 18,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 37,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SudokuApp.Model.PuzzleResponse::.ctor(System.String,System.String,System.Int32[][])": {
+          "Lines": {
+            "11": 10,
+            "12": 10,
+            "13": 10,
+            "14": 10,
+            "15": 10,
+            "16": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Controllers\\SudokuController.cs": {
+      "SudokuApp.Controllers.SudokuController": {
+        "Microsoft.AspNetCore.Mvc.ViewResult SudokuApp.Controllers.SudokuController::Startup()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<SudokuApp.Model.PuzzleResponse> SudokuApp.Controllers.SudokuController::CreatePuzzle(System.Int32)": {
+          "Lines": {
+            "32": 3,
+            "35": 3,
+            "36": 3,
+            "37": 3,
+            "38": 2,
+            "39": 2,
+            "40": 2,
+            "43": 1,
+            "44": 1,
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "53": 3
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 37,
+              "Offset": 21,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.ActionResult`1<SudokuApp.Model.PuzzleResponse> SudokuApp.Controllers.SudokuController::Solution(SudokuApp.Model.Puzzle)": {
+          "Lines": {
+            "58": 4,
+            "61": 4,
+            "62": 4,
+            "63": 4,
+            "64": 4,
+            "65": 4,
+            "66": 3,
+            "67": 3,
+            "68": 3,
+            "70": 1,
+            "71": 1,
+            "72": 1,
+            "73": 4,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "84": 4
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 65,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 65,
+              "Offset": 35,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 62,
+              "Offset": 8,
+              "EndOffset": 87,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void SudokuApp.Controllers.SudokuController::.ctor(Microsoft.Extensions.Logging.ILogger`1<SudokuApp.Controllers.SudokuController>,SudokuApp.Service.IPuzzleService,SudokuApp.Repository.IPuzzleRepository)": {
+          "Lines": {
+            "16": 7,
+            "17": 7,
+            "18": 7,
+            "19": 7,
+            "20": 7,
+            "21": 7
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "SudokuApp.Views.dll": {
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Views\\Shared\\_Layout.cshtml": {
+      "AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__8_0>d": {
+        "System.Void AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__8_0>d::MoveNext()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 30,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 30,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 122,
+              "EndOffset": 126,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 122,
+              "EndOffset": 173,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__8_1>d": {
+        "System.Void AspNetCore.Views_Shared__Layout/<<ExecuteAsync>b__8_1>d::MoveNext()": {
+          "Lines": {
+            "64": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\shubh\\source\\repos\\GIT repos\\SudokuApp\\Views\\Sudoku\\Startup.cshtml": {
+      "AspNetCore.Views_Sudoku_Startup/<ExecuteAsync>d__7": {
+        "System.Void AspNetCore.Views_Sudoku_Startup/<ExecuteAsync>d__7::MoveNext()": {
+          "Lines": {
+            "3": 0,
+            "6": 0
+          },
+          "Branches": [
+            {
+              "Line": 6,
+              "Offset": 389,
+              "EndOffset": 391,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 6,
+              "Offset": 389,
+              "EndOffset": 502,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

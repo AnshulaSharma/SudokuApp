@@ -82,6 +82,5 @@ namespace SudokuApp.Controllers
                 return response;
             }
         }
-
     }
 }
